@@ -1,10 +1,10 @@
  1. Add a new feature class
 ---------------------------
 
-Souce code for feature classes lives under `ludwig/features`.
+Source code for feature classes lives under `ludwig/features`.
 Input and output feature classes are defined in the same file, for example `CategoryInputFeature` and `CategoryOutputFeature` are defined in `ludwig/features/category_feature.py`.
 
-An input features inherit from the `InputFeature` and corresponding mixin feature classes, for example `CategoryInputFeature` inherits from `CategoryFeatureMixin` and `InputFeature`.
+All input features inherit from the `InputFeature` and corresponding mixin feature classes, for example `CategoryInputFeature` inherits from `CategoryFeatureMixin` and `InputFeature`.
 
 Similarly, output features inherit from the `OutputFeature` and corresponding base feature classes, for example `CategoryOutputFeature` inherits from `CategoryFeatureMixin` and `OutputFeature`.
 
@@ -25,7 +25,7 @@ __Inputs__
 
 
 - __feature__: (dict) contains all feature parameters.
-- __encoder_obj__: (*Encoder, default: `None`) is an encoder object of the type supported (a cateory encoder, binary encoder, etc.). It is used only when two input features share the encoder.
+- __encoder_obj__: (*Encoder, default: `None`) is an encoder object of the type supported (a category encoder, binary encoder, etc.). It is used only when two input features share the encoder.
 
 
 ### `call`
@@ -65,7 +65,7 @@ __Inputs__
 ### `logits`
 
 ```python
-def call(self, inputs, **kwargs):
+def logits(self, inputs, **kwargs):
 ```
 
 __Inputs__
@@ -79,12 +79,13 @@ __Return__
 ### `predictions`
 
 ```python
-def call(self, inputs, **kwargs):
+def predictions(self, inputs, feature_name, **kwargs):
 ```
 
 __Inputs__
 
 - __inputs__ (dict): input dictionary that contains the output of the combiner and the logits function.
+- __feature_name__ (str): The name of the output feature.
 
 __Return__
 
