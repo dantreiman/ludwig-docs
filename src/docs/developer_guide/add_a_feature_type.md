@@ -53,7 +53,7 @@ All input features should implement `__init__`, `logits` and `predictions` metho
 ### `__init__`
 
 ```python
-def __init__(self, feature, encoder_obj=None):
+def __init__(self, feature, decoder_obj=None):
 ```
 
 __Inputs__
