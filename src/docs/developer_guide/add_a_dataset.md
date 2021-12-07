@@ -21,16 +21,22 @@ Override `ludwig.datasets.base_dataset.BaseDataset` and implement the following 
 
 For common steps (e.g., extracting zip files, downloading from Kaggle, etc.) a set of mixins are available for your subclass:
 
-- Mixin
-- Mixin
+- ZipDownloadMixin
+- TarDownloadMixin
+- GZipDownloadMixin
+- UncompressedFileDownloadMixin
+- KaggleDatasetDownloadMixin
+- KaggleDownloadMixin
+- CSVLoadMixin
+- ParquetLoadMixin
 
 Mixin properites for a specific dataset are configurable within the `config.yaml` file in the new dataset module.
 These mixins cover most common functionalities that are available in the subclass you are creating, but new mixins can also be added.
-Before adding a new mixin or writing code for downloading, processing and loading a new dataset, please check if you can reuse one of the curent mixins.
+Before adding a new mixin or writing code for downloading, processing and loading a new dataset, please check if you can reuse one of the current mixins.
 If not, please consider adding a new mixin if the functionality you need is common among multiple datasets or implement bespoke code in the implementation of the abstract methods of the `BaseDataset` subclass.
 
 Please try to mimic the existing unit tests to add new ones for your dataset.
-Before submitting a new dataset, please test the functionality locally mimicing the already existing examples to be able to load your dataset, split it and call the Ludwig training API to ensure everything runs fine.
+Before submitting a new dataset, please test the functionality locally mimicking the already existing examples to be able to load your dataset, split it and call the Ludwig training API to ensure everything runs fine.
 
 For datasets hosted on Kaggle, refer to  [Python Kaggle Client](https://technowhisp.com/kaggle-api-python-documentation/) to see how you can configure your Kaggle credentials locally to download datasets.
 Also see the internals of the [Kaggle DownloadMixin](https://github.com/ludwig-ai/ludwig/blob/master/ludwig/datasets/mixins/kaggle.py).
